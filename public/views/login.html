@@ -1,0 +1,36 @@
+<div class="login-body">
+    <article class="container-login center-block">
+		<section>
+			<div class="tab-content tabs-login col-lg-12 col-md-12 col-sm-12 cols-xs-12">
+				<div id="login-access" class="tab-pane fade active in">
+					<h2><i class="glyphicon glyphicon-log-in"></i> Acceso</h2>						
+					<form method="post" accept-charset="utf-8" autocomplete="off"  ng-submit="login(user)"  role="form" class="form-horizontal" name="loginForm">
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.login.$invalid && loginForm.login.$dirty }">
+								<input type="text" class="form-control input-lg" name="login" id="login_value" 
+									placeholder="Usuario" ng-model="user.username" required autofocus>
+              					<span class="ion-person form-control-feedback"></span>
+              					<div class="help-block text-danger" ng-if="loginForm.login.$dirty" ng-messages="loginForm.login.$error">
+                        			<div ng-message="required">El usuario es requerido</div>
+                    			</div>
+						</div>
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.password.$invalid && loginForm.password.$dirty }">
+								<input type="password" class="form-control input-lg" name="password"
+									placeholder="Contraseña"  ng-model="user.password" required>
+								<span class="ion-key form-control-feedback"></span>
+								<div class="help-block text-danger" ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
+                        			<div ng-message="required">La contraseña es requerida</div>
+                    			</div>
+						</div>
+						<div class="form-group ">				
+								<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-primary" ng-disabled="loginForm.$invalid">Entrar</button>
+						</div>
+						<br>
+						<p class=" text-center">
+							<a href="#">¿Olvidaste la contraseña?</a>
+						</p>
+					</form>			
+				</div>
+			</div>
+		</section>
+	</article>
+</div>

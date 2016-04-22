@@ -1,0 +1,93 @@
+<div ng-repeat="user in listUser">
+	{{user}}
+</div>
+
+<div class="row col-xs-8 col-md-5 position_chat" ng-controller="ChatCtrl">
+<div class="panel panel-primary" style="margin-bottom: 0;">
+	<div class="panel-heading {{classConect}}"  data-toggle="collapse" data-target="#collapseChat" aria-expanded="false" aria-controls="collapseChat" style="cursor: pointer;" ng-click="validarChat()" >
+		<span class="glyphicon glyphicon-comment"></span> Chat
+		<!-- <div class="btn-group pull-right">
+			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</button>
+			<ul class="dropdown-menu slidedown">
+				<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+				</span>Refresh</a></li>
+				<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+				</span>Available</a></li>
+				<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+				</span>Busy</a></li>
+				<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+					Away</a></li>
+					<li class="divider"></li>
+					<li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+						Sign Out</a></li>
+					</ul>
+				</div> -->
+			</div>
+			<div class="collapse" id="collapseChat">
+				<div role="tabpanel">
+
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist" id="myTab">
+						<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Conectados</a></li>
+						<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Chat</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<div class="panel-body center-block" >
+								<ul class="chat" ng-repeat="conectado in conectados">
+									<li class="left clearfix center-block ">
+										<span class="chat-img pull-left charUser">
+											<span class="glyphicon glyphicon-user img-circle"></span>
+											<strong class="primary-font"> {{conectado}}</strong>
+
+										</span>
+										<strong class="pull-right " style="background: rgb(61, 179, 61);
+										border-radius: 12px;
+										width: 12px;
+										height: 12px;">&nbsp</strong>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="profile">
+							<div class="panel-body" >
+								<ul class="chat" ng-repeat="msg in listMessage">
+									<li class="left clearfix">
+										<span class="chat-img pull-left">
+											<span class="glyphicon glyphicon-user img-circle"></span>
+											
+										</span>
+										<div class="chat-body clearfix">
+											<div class="header charUser">
+												<strong class="primary-font ">{{msg.nick}}</strong> <small class="pull-left text-muted">
+												<!--<span class="glyphicon glyphicon-time"></span>12 mins ago</small>-->
+											</div>
+											<p>
+												{{msg.message}}
+											</p>
+										</div>
+									</li>
+
+								</ul>
+							</div>
+							<div class="panel-footer">
+								<div class="input-group">
+									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Escriba su mensaje aquí ..." ng-model="message" ng-keyup="$event.keyCode == 13 ? send() : null" ng-focus="removeClass()">
+									<span class="input-group-btn">
+										<button class="btn btn-warning btn-sm" id="btn-chat" ng-click="send()">
+											Enviar</button>
+										</span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

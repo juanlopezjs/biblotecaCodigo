@@ -1,0 +1,37 @@
+<div ng-include="'views/menu.html'"></div>
+<div class="row">
+	<div class="col-md-7 col-md-offset-2 blog-main">
+		<div class="content">
+			<h1>Registrar Funcionalidad</h1><br>
+			<form name="loginForm" ng-submit="save()">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.titles.$invalid && loginForm.titles.$dirty }">
+					<label for="exampleInputEmail1">Titulo</label>
+					<input type="text" class="form-control input-lg" ng-model="formData.titles" name="titles" required autofocus>
+					<span class="ion-edit form-control-feedback"></span>
+					<div class="help-block text-danger" ng-if="loginForm.titles.$dirty" ng-messages="loginForm.titles.$error">
+                        <div ng-message="required">El titulo es requerido</div>
+                    </div>				
+				</div>
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.descripcion.$invalid && loginForm.descripcion.$dirty }">
+					<label for="exampleInputEmail1">Descripcion</label>
+					<textarea class="form-control input-lg" rows="8" ng-model="formData.descripcion" name="descripcion" required></textarea>
+					<span class="ion-document-text form-control-feedback"></span>
+					<div class="help-block text-danger" ng-if="loginForm.descripcion.$dirty" ng-messages="loginForm.descripcion.$error">
+                        <div ng-message="required">La descripción es requerida</div>
+                    </div>	
+				</div>
+			 	<div class="form-group has-feedback" ng-class="{ 'has-error' : loginForm.combo.$invalid && loginForm.combo.$dirty }">
+			 		<label for="exampleInputEmail1">Tipo</label>
+			 		<select  ng-model="formData.combo" class="form-control" name="combo" required>
+                    <option value="{{select._id}}" ng-repeat="select in selects">{{select.nombre}}</option>
+                </select>
+                <div class="help-block text-danger" ng-if="loginForm.combo.$dirty" ng-messages="loginForm.combo.$error">
+                        <div ng-message="required">El tipo es requerido</div>
+                    </div>
+			 	</div>
+				<button type="submit" class="btn btn-primary">Registrar funcionalidad</button>
+			</form>
+		</div>
+	</div>
+</div>
+

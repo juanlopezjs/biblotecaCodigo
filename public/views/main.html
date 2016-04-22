@@ -1,0 +1,53 @@
+<div ng-include="'views/menu.html'"></div>
+
+
+<div class="row">
+  <!--div class="col-sm-12 blog-main">-->
+  <div class="col-sm-12 col-md-10 col-md-offset-1 blog-main">
+    <div ng-show="objetos.length != 0" class="animate-show">
+     <div ng-repeat="objeto in objetos | filter:search | orderBy:titulo:true">
+      <div class="caja col-xs-11" ng-click="min()">
+        <div class="col-xs-11 col-sm-2">
+          <div  class="logo">
+            <img src="{{objeto.tipo_objetos.imagen}}"/>
+          </div>
+        </div>
+        <div class="col-xs-11 col-sm-10">
+          <div class="titulo">{{objeto.titulo}} - {{objeto.tipo_objetos.nombre}} <a data-ng-href="#/editar/{{objeto._id}}" class="edit btn btn-circle btn-info" data-toggle="tooltip" 
+          tooltip="Tooltip on left"
+          tooltip-placement="left"><i class="glyphicon glyphicon-edit"></i></a></div>
+          <div class="description">{{objeto.descripcion}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-show="objetos.length == 0" class="animate-show text-center">
+    <h2 class="not_function">No hay funcionalidades creadas :( </h2>
+  </div>
+</div><!-- /.blog-main -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">{{modal.titulo}}</h3>
+      </div>
+      <div class="modal-body" style='max-height:500px;
+      overflow:auto;'>
+        <h5 class="lead">Usuario: <small> {{modal.users.nombres}} {{modal.users.apellidos}} - ({{modal.users.username}})</small></h5>
+        <h5 class="lead">Fecha de registro: <small> {{modal.fecha_registro | date :'MM/dd/yyyy h:mma'}}</small></h5>
+        <h5 class="lead">Tipo de funcionalidad: <small> {{modal.tipo_objetos.nombre}}</small></h5>
+        <h5 class="lead">Descripcion: <small> {{modal.descripcion}}</small></h5>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--<div ng-include="'views/chat.html'"></div>
+

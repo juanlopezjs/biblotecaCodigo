@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top menu " role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div  ng-if="userIn.admin == false">
+					<a class="navbar-brand" href="#/">Bibloteca de C&oacute;digo</a>
+				</div>
+				<div  ng-if="userIn.admin == true">
+					<a class="navbar-brand" href="#/admin">Bibloteca de C&oacute;digo</a>
+				</div>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a  class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"><span class="caret"></span></span></a>
+						<ul class="dropdown-menu" ng-if="userIn.admin == false">
+							<li><a href="#/registrar">Registrar Funcionalidad</a></li>
+						</ul>
+
+						<ul class="dropdown-menu" ng-if="userIn.admin == true">
+							<li><a href="#/admin/usuarios">Administrar Usuarios</a></li>
+							<li><a href="#/admin">Administrar Funcionalidades</a></li>
+							<li><a href="#/admin/tipos">Administrar Tipos de funcionalidades</a></li>
+							
+						</ul>
+					</li>
+				</ul>
+				<div class="col-sm-6 col-md-7">
+					<form class="navbar-form" role="search">
+						<div class="input-group" style="width: 100%;">
+							<input type="text" class="form-control" placeholder="Buscar" ng-model="$parent.search.$">
+							<div class="input-group-btn">
+								<button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown" ng-controller="MenuCtrl" >
+						<a  class="dropdown-toggle" data-toggle="dropdown"> {{userIn.name}} <span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-if="userIn.admin == false"><a href="#/password">Cambiar contraseña</a></li>
+							<li ng-if="userIn.admin == true"><a href="#/admin/password">Cambiar contraseña</a></li>
+							<li><a  ng-click="acerca()">Acerca de</a></li>
+							<li class="divider"></li>
+							<li><a href="#"  ng-click="logout()">Salir</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
