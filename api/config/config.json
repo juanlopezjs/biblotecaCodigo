@@ -1,0 +1,12 @@
+{
+    "server"  : {
+        "port"     : 8080
+    },
+    "database": {
+        "db"       : "biblotecaCodigo",
+        "user"     : "",
+        "password" : "",
+        "host"     : "localhost",
+        "port"	   : "27017"
+    }
+}
