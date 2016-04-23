@@ -1,13 +1,13 @@
 {
-	"name" 			: "Bibloteca-Codigo",
-	"version" 		: "1",
-	"description"	: "Bibloteca de codigo donde buscar es lo mas facil.",
-	"main"			: "server.js",
+	"name" : "Bibloteca-Codigo",
+	"version" : "1",
+	"description" : "Bibloteca de codigo donde buscar es lo mas facil.",
+	"main" : "index.js",
 	"dependencies"	: {
-		"express"	: "~3.x",
-		"mongoose"	: "latest",
+		"express" : "~3.x",
+		"mongoose": "latest",
 		"socket.io": "*",
-    	"jsonwebtoken": "*",
-    	"bcrypt" : "*"
+    		"jsonwebtoken": "*",
+    		"bcrypt" : "*"
 	} 
 }
