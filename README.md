@@ -11,11 +11,10 @@ Los usuarios se definen como administradores o desarrolladores. El admin (admini
 Los desarrolladores pueden  ver todas las funcionalidades creadas, crear nuevas funcionalidades, editar una funcionalidad y ver el detalle de una funcionalidad especifica.
 
 ## Arquitectura definida
+[![Arquitectura](http://funnyfrontend.com/wp-content/uploads/2015/07/stack-mean-esquema.jpg)]()
 
-[![Arquitectura](http://funnyfrontend.com/wp-content/uploads/2015/07/stack-mean-esquema.jpg)]
 
-
-## Esta herramienta se construyó con tecnologías tales como:
+## Tecnologías utilizadas
 
 * MongoDB
 * Express
