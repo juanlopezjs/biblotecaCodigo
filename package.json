@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "biblotecacodigo",
   "version": "1.0.0",
   "description": "Bibloteca de codigo donde buscar es lo mas facil",
@@ -32,17 +31,4 @@
     "url": "https://github.com/juanma0474/biblotecaCodigo/issues"
   },
   "homepage": "https://github.com/juanma0474/biblotecaCodigo#readme"
-=======
-	"name" : "Bibloteca-Codigo",
-	"version" : "1",
-	"description" : "Bibloteca de codigo donde buscar es lo mas facil.",
-	"main" : "index.js",
-	"dependencies"	: {
-		"express" : "~3.x",
-		"mongoose": "latest",
-		"socket.io": "*",
-    		"jsonwebtoken": "*",
-    		"bcrypt" : "*"
-	} 
->>>>>>> origin/master
 }
