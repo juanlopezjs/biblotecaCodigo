@@ -3,10 +3,7 @@
         "port"     : 8080
     },
     "database": {
-        "db"       : "biblotecaCodigo",
-        "user"     : "",
-        "password" : "",
-        "host"     : "localhost",
-        "port"	   : "27017"
+        "_comment" : "Connections examples mongodb://localhost/myapp ó mongodb://username:password@host:port/database",
+        "connectionString" : "mongodb://localhost/biblotecaCodigo"
     }
 }

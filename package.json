@@ -1,13 +1,34 @@
 {
-	"name" 			: "Bibloteca-Codigo",
-	"version" 		: "1",
-	"description"	: "Bibloteca de codigo donde buscar es lo mas facil.",
-	"main"			: "server.js",
-	"dependencies"	: {
-		"express"	: "~3.x",
-		"mongoose"	: "latest",
-		"socket.io": "*",
-    	"jsonwebtoken": "*",
-    	"bcrypt" : "*"
-	} 
+  "name": "biblotecacodigo",
+  "version": "1.0.0",
+  "description": "Bibloteca de codigo donde buscar es lo mas facil",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~3.x",
+    "mongoose": "latest",
+    "socket.io": "*",
+    "jsonwebtoken": "*",
+    "bcryptjs": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanma0474/biblotecaCodigo.git"
+  },
+  "keywords": [
+    "codigos",
+    "bibloteca",
+    "funcionalidad",
+    "funcionalidades",
+    "genericas"
+  ],
+  "author": "Juan Manuel López",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanma0474/biblotecaCodigo/issues"
+  },
+  "homepage": "https://github.com/juanma0474/biblotecaCodigo#readme"
 }

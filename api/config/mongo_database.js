@@ -9,12 +9,13 @@
 /*Se agrega driver para conectarse a mongoo*/
 var mongoose = require('mongoose');
 /*Libreria para encriptar las contraseñas*/
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var SALT_WORK_FACTOR = 10;
 var config = require('./config.json');
 /*Conexion con la bd*/
-var mongodbURL = 'mongodb://'+config.database.user+':'+config.database.password+'@'+config.database.host+':'+config.database.port+'/'+config.database.db;
+var mongodbURL = config.database.connectionString;
 //var connectionString = "postgres://"+config.postgres.user+":"+config.postgres.password+"@"+config.postgres.host+"/"+config.postgres.db;
+
 var mongodbOptions = { };
 
 /*Metodo de conexion*/
