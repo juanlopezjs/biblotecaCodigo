@@ -1,6 +1,6 @@
 {
     "server"  : {
-        "port"     : 80
+        "port"     : 8080
     },
     "database": {
         "_comment" : "Connections examples mongodb://localhost/myapp ó mongodb://username:password@host:port/database",
