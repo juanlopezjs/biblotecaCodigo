@@ -39,17 +39,17 @@
                 $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
             }
         });
-   
+
  	})
  	.error(function(data){
- 		console.log('Error: ' + data);
+ 		console.log('Error: ' + data.err);
  	});
 
     funcionalidad.tipoObjetos().success(function(data){
             $scope.selects = data;
      });
 
-    
+
     $scope.editarModal = function () {
 
     	$scope.formTitulo = "Editar Funcionalidad";
@@ -97,18 +97,18 @@
                 }
             }]
         });
-    	
+
     }
-  
+
     $scope.accion = function (){
     	if(accion == 1){
     		/*crear*/
     		funcionalidad.saveFuncionalidad($scope.formData, function (resp){
                 if(resp == true)
                     $scope.formData = {};
-                    $scope.loginForm.$setPristine();    
+                    $scope.loginForm.$setPristine();
             });
-            
+
     	}else{
     		/*editar*/
     		funcionalidad.updateFuncionalidad($scope.formData);
@@ -116,5 +116,5 @@
     };
 
 
-    
+
 });

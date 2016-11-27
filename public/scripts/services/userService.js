@@ -15,12 +15,12 @@ angular.module('biblotecaApp')
 		return $http({
 			method :"POST",
 			skipAuthorization : true,
-			url :'/api/login', 
+			url :'/api/login',
 			data : {username: user.username, password: user.password}
 		})
 	},
 	loginSvc.logout = function(){
-		
+
 		socket.disconnect();
 		return $http({
 			method :"POST",
@@ -33,23 +33,29 @@ angular.module('biblotecaApp')
 		return $http({
 			method :"POST",
 			skipAuthorization : true,
-			url :'/api/updatePassword', 
+			url :'/api/updatePassword',
 			data : changePass
 		})
 
 	}
 	return loginSvc;
 })
-.service('requestService', function ($window){
+.service('requestService', function ($window, jwtHelper, $rootScope){
 	var auth = {
 		isLogged: false,
 		check: function() {
-			if (window.localStorage.getItem("token")) {
+			var token = window.localStorage.getItem("token");
+			if (token && jwtHelper.isTokenExpired(token) == false) {
 				this.isLogged = true;
 				this.user =  JSON.parse($window.localStorage.getItem("user"));
 			} else {
 				this.isLogged = false;
 				delete this.user;
+				delete $window.localStorage.token;
+				$window.localStorage.clear();
+				delete $window.localStorage.user;
+				$rootScope.userIn = "";
+
 			}
 		}
 	}

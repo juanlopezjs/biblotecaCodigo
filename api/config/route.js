@@ -3,7 +3,7 @@
  * @name biblotecaApp api route
  * @Author Juan Manuel López Bedoya (juanma0474@hotmail.com)
  * @description
- * # route : Routing al lado del servidor 
+ * # route : Routing al lado del servidor
  * Routing of the biblotecaApp
  */
 
@@ -11,7 +11,7 @@
 
 	/*
 	 *@function auth
-	 *@description : Captura el token del cliente y lo valida con el token del servidor 
+	 *@description : Captura el token del cliente y lo valida con el token del servidor
 	 *				 Para permitirle acceso a la informacion
 	 */
 
@@ -22,6 +22,7 @@
 
 	 	var token;
 	 	/*se valida si las cabeceras tienen el token*/
+    console.log(req.param('token'));
 	 	if (req.headers && req.headers.authorization) {
 	 		var parts = req.headers.authorization.split(' ');
 	 		if (parts.length === 2) {
@@ -30,6 +31,7 @@
 
 	 			if (/^Bearer$/i.test(scheme)) {
 	 				token = credentials.replace(/"/g, "");
+          console.log("juanma "+token);
 	 			}
 	 		} else {
 	 			return res.json(401, {err: 'El formato de autorizacion es: Bearer [token]'});
@@ -43,12 +45,13 @@
 
 	 	/*Si todo esta bien se verifica el token del cliente con el del servidor*/
 	 	return jwt.verify(token, mySecretKey, {}, function(err, decoded) {
+      console.log("verify "+token);
 	 		if (err) return res.json(401, {err: 'El token no es valido'});
 
 	 		req.token = decoded;
 	 		next();
 	 	});
-	 }	
+	 }
 
 	/*
 	 *@Routing  api /api/bibloteca
@@ -105,7 +108,7 @@
 	 *@Routing  api /api/tiposObjetos
 	 *@param    auth : Verifica antes de hacer la peticion si existen un token
 	 *@Method   GET
-	 *@description : Devuelve los tipos de objetos 
+	 *@description : Devuelve los tipos de objetos
 	 */
 	 app.get('/api/tiposObjetos', auth, function (req, res){
 	 	db.tiposObjetos.find({estado : '1'}, function(err, tipo){
@@ -121,7 +124,7 @@
 	 *@Routing  api /api/tiposObjetos
 	 *@param    auth : Verifica antes de hacer la peticion si existen un token
 	 *@Method   GET
-	 *@description : Devuelve los tipos de objetos 
+	 *@description : Devuelve los tipos de objetos
 	 */
 	 app.get('/api/allTiposObjetos', auth, function (req, res){
 	 	getAllTiposObjetos(function(resp){
@@ -180,7 +183,7 @@
 	 		}else{
 	 			getAllTiposObjetos(function(resp){
 	 				res.json({msg : 'Se elimino el tipo de funcionalidad satisfactoriamente.', tipo : resp.tipo, type : "success"});
-	 			});	
+	 			});
 	 		}
 	 	});
 	 });
@@ -202,8 +205,8 @@
 	 			});
 	 		}
 	 		if(tipo.length == 0){
-	 			var tipoFuncionalidad = new db.tiposObjetos({nombre : req.body.nombreTipo, 
-	 				imagen : req.body.img, 								  
+	 			var tipoFuncionalidad = new db.tiposObjetos({nombre : req.body.nombreTipo,
+	 				imagen : req.body.img,
 	 			});
 
 	 			tipoFuncionalidad.save(function(err){
@@ -292,7 +295,7 @@
 	 		}else{
 	 			getUsers(function(users){
 	 				res.json({msg : 'Se elimino el usuario satisfactoriamente.', users : users});
-	 			});	
+	 			});
 	 		}
 	 	});
 	 });
@@ -313,11 +316,11 @@
 	 			});
 	 		}
 	 		if(user.length == 0){
-	 			var funcionalidad = new db.User({nombres : req.body.nombre, 
-	 				apellidos : req.body.apellido, 
-	 				username : req.body.usuario, 
-	 				password : req.body.usuario, 
-	 				email: req.body.correo									  
+	 			var funcionalidad = new db.User({nombres : req.body.nombre,
+	 				apellidos : req.body.apellido,
+	 				username : req.body.usuario,
+	 				password : req.body.usuario,
+	 				email: req.body.correo
 	 			});
 
 	 			funcionalidad.save(function(err){
@@ -326,7 +329,7 @@
 	 				}else{
 	 					getUsers(function(users){
 	 						res.json({msg : 'Se registro el usuario satisfactoriamente.', users : users});
-	 					});	
+	 					});
 	 				}
 	 			});
 	 		}else{
@@ -360,7 +363,7 @@
 	 			});
 	 		}
 
-	 		
+
 	 		if(req.body.password != undefined || req.body.password != null){
 
 	 			user.comparePassword(req.body.password, function(isMatch) {
@@ -378,7 +381,7 @@
 	 					path = "/"
 	 				}
 
-	 				var token = jwt.sign(user._id, mySecretKey, { expiresInMinutes: 1 });
+	 				var token = jwt.sign(user._id, mySecretKey, { expiresInMinutes: 20 });
 
 	 				return res.status(200).json({
 	 					user:{id: user._id ,name: user.nombres+" "+user.apellidos, username : user.username, email : user.email, path : path, admin : user.isAdmin},
@@ -392,7 +395,7 @@
 	 			});
 	 		}
 	 	});
-	 });	
+	 });
 
 	/*
 	 *@Routing  api /api/updatePassword
@@ -401,7 +404,7 @@
 	 */
 	 app.post('/api/updatePassword',auth, function(req, res){
 
-	 	
+
 	 	db.User.findOne({username: req.body.username}, function (err, user, count) {
 
 	 		if (err) {
@@ -416,7 +419,7 @@
 	 			});
 	 		}
 
-	 		
+
 	 		if(req.body.oldPassword != undefined || req.body.oldPassword != null){
 
 
@@ -427,7 +430,7 @@
 	 					return res.json({
 	 						msg : 'La contraseña anterior que ha escrito no coincide con la actual.', type : "danger"
 	 					});
-	 				}else if(req.body.password != req.body.newPassword){	
+	 				}else if(req.body.password != req.body.newPassword){
 
 	 					return res.json({
 	 						msg : 'Las contraseñas no coinciden.', type : "danger"
