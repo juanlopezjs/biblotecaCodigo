@@ -22,7 +22,6 @@
 
 	 	var token;
 	 	/*se valida si las cabeceras tienen el token*/
-    console.log(req.param('token'));
 	 	if (req.headers && req.headers.authorization) {
 	 		var parts = req.headers.authorization.split(' ');
 	 		if (parts.length === 2) {
@@ -31,7 +30,6 @@
 
 	 			if (/^Bearer$/i.test(scheme)) {
 	 				token = credentials.replace(/"/g, "");
-          console.log("juanma "+token);
 	 			}
 	 		} else {
 	 			return res.json(401, {err: 'El formato de autorizacion es: Bearer [token]'});
@@ -45,7 +43,6 @@
 
 	 	/*Si todo esta bien se verifica el token del cliente con el del servidor*/
 	 	return jwt.verify(token, mySecretKey, {}, function(err, decoded) {
-      console.log("verify "+token);
 	 		if (err) return res.json(401, {err: 'El token no es valido'});
 
 	 		req.token = decoded;
